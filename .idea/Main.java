@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String tekst = "ala ma kota";
+        String tekst = "Ala ma kota!";
         /*
         do {
             System.out.print("Wczytać z plików (P) czy wprowadzić tekst ręcznie (R)? ");
