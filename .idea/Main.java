@@ -42,9 +42,11 @@ public class Main {
             listaZnakow.add(litera);
             listaWystepowania.add(counter);
         }
-
+        System.out.println("QFHBCVWHDBVWHBVNJDVDNUIBDAIBNDJHBNIJB KFS");
         for (int i = 0; i < listaZnakow.size(); i++) {
-            System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
+            if(listaWystepowania.get(i) != 0) {
+                System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
+            }
         }
     }
 }
