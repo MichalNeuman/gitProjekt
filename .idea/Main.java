@@ -6,6 +6,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String tekst = "ala ma kota";
+        /*
         do {
             System.out.print("Wczytać z plików (P) czy wprowadzić tekst ręcznie (R)? ");
             String opcja = scanner.next().toLowerCase();
@@ -18,43 +20,31 @@ public class Main {
                 break;
             } else if (opcja.equals("r")) {
                 System.out.print("Wprowadź tekst: ");
-                String tekst = scanner.next();
-
+                tekst = scanner.next().toLowerCase();
                 break;
             } else {
                 System.out.println("Nieprawidłowa opcja. Wybierz 'P' lub 'R'.");
             }
         } while (true);
-    }
+*/
 
-    //Zliczanie liter (ASCII 97 - 122)
-    public static ArrayList<Object> utworzListyCharInt(String tekst) {
         List<Character> listaZnakow = new ArrayList<>();
         List<Integer> listaWystepowania = new ArrayList<>();
 
         //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
-        for (int i = 97; i <= 122; i++) {
+        for (char litera = 'a'; litera <= 'z'; litera++) {
             int counter = 0;
-            for (char znak: tekst.toCharArray()) {
-                if(znak == i){
+            for (char znak : tekst.toCharArray()) {
+                if (znak == litera) {
                     counter++;
                 }
             }
-            char znak = (char) i;
-            listaZnakow.add(znak);
+            listaZnakow.add(litera);
             listaWystepowania.add(counter);
         }
-        List<Object> wynik = new ArrayList <Object>();
-        wynik.add(listaZnakow);
-        wynik.add(listaWystepowania);
-        return (ArrayList<Object>) wynik;
-    }
 
-    //Wydrukuj histogram -------------------------
-    public static void DrukujDaneHistogram(ArrayList<Object> wystepowanie){
-        for (int i = 0; i < ((List<?>) wystepowanie.get(0)).size(); i++) {
-            System.out.println(((List<?>) wystepowanie.get(0)).get(i) + ": " + (List<?>) ((List<?>) wystepowanie.get(1)).get(i));
+        for (int i = 0; i < listaZnakow.size(); i++) {
+            System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
         }
     }
 }
-
