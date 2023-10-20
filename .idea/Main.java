@@ -19,7 +19,7 @@ public class Main {
             } else if (opcja.equals("r")) {
                 System.out.print("Wprowadź tekst: ");
                 String tekst = scanner.next();
-                Object wystepowanie = utworzListyCharInt(tekst);
+
                 break;
             } else {
                 System.out.println("Nieprawidłowa opcja. Wybierz 'P' lub 'R'.");
@@ -28,7 +28,7 @@ public class Main {
     }
 
     //Zliczanie liter (ASCII 97 - 122)
-    public static Object utworzListyCharInt(String tekst) {
+    public static ArrayList<Object> utworzListyCharInt(String tekst) {
         List<Character> listaZnakow = new ArrayList<>();
         List<Integer> listaWystepowania = new ArrayList<>();
 
@@ -44,11 +44,17 @@ public class Main {
             listaZnakow.add(znak);
             listaWystepowania.add(counter);
         }
-
-        List<Object> wynik = new ArrayList<>();
+        List<Object> wynik = new ArrayList <Object>();
         wynik.add(listaZnakow);
         wynik.add(listaWystepowania);
-        return wynik;
+        return (ArrayList<Object>) wynik;
+    }
+
+    //Wydrukuj histogram -------------------------
+    public static void DrukujDaneHistogram(ArrayList<Object> wystepowanie){
+        for (int i = 0; i < ((List<?>) wystepowanie.get(0)).size(); i++) {
+            System.out.println(((List<?>) wystepowanie.get(0)).get(i) + ": " + (List<?>) ((List<?>) wystepowanie.get(1)).get(i));
+        }
     }
 }
 
