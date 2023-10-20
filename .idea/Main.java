@@ -14,7 +14,9 @@ public class Main {
                 System.out.print("Podaj ścieżkę do katalogu z plikami tekstowymi: ");
                 String katalog = scanner.next();
                 Map<Character, Integer> zliczenieLiter = przetworzKatalog(katalog);
-                wyswietlHistogram(zliczenieLiter);
+                if(zliczenieLiter != null){
+                    wyswietlHistogram(zliczenieLiter);
+                }
                 break;
             } else if (opcja.equals("r")) {
                 System.out.print("Wprowadź tekst: ");
@@ -39,6 +41,7 @@ public class Main {
         return zliczenieLiter;
     }
 
+//SPRAWDZONE---
     public static Map<Character, Integer> przetworzKatalog(String sciezkaKatalogu) {
         Map<Character, Integer> zliczenieLiter = new HashMap<>();
         File katalog = new File(sciezkaKatalogu);
@@ -69,7 +72,7 @@ public class Main {
     public static void wyswietlHistogram(Map<Character, Integer> zliczenieLiter) {
         System.out.println("Histogram częstości liter:");
         for (Map.Entry<Character, Integer> entry : zliczenieLiter.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            System.out.println(entry.getKey() + " - " + entry.getValue());
         }
     }
 }
