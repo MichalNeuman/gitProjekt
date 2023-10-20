@@ -6,8 +6,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String tekst = "Ala ma kota!";
-        /*
+        String tekst = null;
+
         do {
             System.out.print("Wczytać z plików (P) czy wprowadzić tekst ręcznie (R)? ");
             String opcja = scanner.next().toLowerCase();
@@ -20,21 +20,22 @@ public class Main {
                 break;
             } else if (opcja.equals("r")) {
                 System.out.print("Wprowadź tekst: ");
-                tekst = scanner.next().toLowerCase();
+                tekst = scanner.next();
                 break;
             } else {
                 System.out.println("Nieprawidłowa opcja. Wybierz 'P' lub 'R'.");
             }
         } while (true);
-*/
 
+
+
+        //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
         List<Character> listaZnakow = new ArrayList<>();
         List<Integer> listaWystepowania = new ArrayList<>();
 
-        //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
         for (char litera = 'a'; litera <= 'z'; litera++) {
             int counter = 0;
-            for (char znak : tekst.toCharArray()) {
+            for (char znak : tekst.toLowerCase().toCharArray()) {
                 if (znak == litera) {
                     counter++;
                 }
@@ -42,7 +43,7 @@ public class Main {
             listaZnakow.add(litera);
             listaWystepowania.add(counter);
         }
-        System.out.println("QFHBCVWHDBVWHBVNJDVDNUIBDAIBNDJHBNIJB KFS");
+        //Wypisanie ile razy co występuje
         for (int i = 0; i < listaZnakow.size(); i++) {
             if(listaWystepowania.get(i) != 0) {
                 System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
