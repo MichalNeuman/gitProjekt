@@ -1,44 +1,83 @@
-import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.*;
+import java.net.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         String tekst = null;
         StringBuilder stringBuilder = new StringBuilder();
+        boolean kontynuuj = true;
 
-        do {
-            System.out.print("Wczytać z plików (P) czy wprowadzić tekst ręcznie (R)? ");
-            String opcja = scanner.next().toLowerCase();
 
-            if (opcja.equals("p")) {
-                System.out.print("Podaj ścieżkę do katalogu z plikami tekstowymi: ");
-                String katalog = scanner.next();
-//NAPISAĆ METODĘ SPRAWDZAJĄCA CZY KATALOG I PLIKI (*.txt) ISTNIEJĄ
-                try{
-                    BufferedReader reader = new BufferedReader(new FileReader(katalog));
-                    String liniaPliku = null;
-                    while((liniaPliku = reader.readLine())!=null){
-                        stringBuilder.append(liniaPliku);
-                    }
-                    tekst =stringBuilder.toString();
-                    break;
-                }catch (Exception e){
-                    System.out.println(e + " plik nie istnieje");
-                }
-//JEŚLI TAK TO ZCZYTUJEMY Z NICH TEKST I WYSYŁAMY DO ????utworzListyCharInt(tekst)?????
+        while (kontynuuj){
+            if(kontynuuj == false){
+                System.out.println(kontynuuj);
                 break;
-            } else if (opcja.equals("r")) {
-                System.out.print("Wprowadź tekst: ");
-                tekst = scanner.next();
-                break;
-            } else {
-                System.out.println("Nieprawidłowa opcja. Wybierz 'P' lub 'R'.");
             }
-        } while (true);
+            System.out.println("Menu:");
+            System.out.println("1. Wprowadź tekst ręcznie z klawiatury");
+            System.out.println("2. Wprowadź tekst z pliku");
+            System.out.println("3. Pobierz zawartość URL");
+            System.out.println("4. Wyjdź");
 
+            int wybor = scanner.nextInt();
+            scanner.nextLine(); // Konsumuj znak nowej linii
+
+            switch (wybor) {
+                case 1:
+                    System.out.print("Wprowadź tekst: ");
+                    tekst = scanner.nextLine();
+                    kontynuuj = false;
+                    break;
+                case 2:
+                    System.out.print("Podaj ścieżkę do pliku tekstowego: ");
+                    String sciezkaPliku = scanner.nextLine();
+
+                    try {
+                        BufferedReader reader = new BufferedReader(new FileReader(sciezkaPliku));
+                        String liniaPliku;
+                        while ((liniaPliku = reader.readLine()) != null) {
+                            stringBuilder.append(liniaPliku).append("\n");
+                        }
+                        tekst = stringBuilder.toString();
+                        kontynuuj = false;
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Plik nie istnieje: " + e.getMessage());
+                    } catch (IOException e) {
+                        System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
+                    }
+
+                    break;
+
+                case 3:
+                    System.out.print("Podaj adres URL: ");
+                    String url = scanner.nextLine();
+                    try {
+                        URL website = new URL(url);
+                        BufferedReader urlReader = new BufferedReader(new InputStreamReader(website.openStream()));
+                        String line;
+                        while ((line = urlReader.readLine()) != null) {
+                            stringBuilder.append(line).append("\n");
+                        }
+                        tekst = stringBuilder.toString();
+                        kontynuuj = false;
+                    } catch (MalformedURLException e) {
+                        System.err.println("Nieprawidłowy adres URL: " + e.getMessage());
+                    } catch (IOException e) {
+                        System.err.println("Błąd podczas pobierania zawartości strony: " + e.getMessage());
+                    }
+                    break;
+                case 4:
+                    System.out.println("Koniec programu.");
+                    kontynuuj = false;
+                    break;
+                default:
+                    System.out.println("Nieprawidłowy wybór. Wybierz 1, 2, 3 lub 4.");
+            }
+        }
 
 
         //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
@@ -55,9 +94,10 @@ public class Main {
             listaZnakow.add(litera);
             listaWystepowania.add(counter);
         }
-        //Wypisanie ile razy co występuje
+
+        // Wypisz ilość wystąpień
         for (int i = 0; i < listaZnakow.size(); i++) {
-            if(listaWystepowania.get(i) != 0) {
+            if (listaWystepowania.get(i) != 0) {
                 System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
             }
         }
