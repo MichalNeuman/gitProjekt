@@ -9,36 +9,6 @@ public class Main {
         String tekst = null;
         StringBuilder stringBuilder = new StringBuilder();
 
-        do {
-            System.out.print("Wczytać z plików (P) czy wprowadzić tekst ręcznie (R)? ");
-            String opcja = scanner.next().toLowerCase();
-
-            if (opcja.equals("p")) {
-                System.out.print("Podaj ścieżkę do katalogu z plikami tekstowymi: ");
-                String katalog = scanner.next();
-//NAPISAĆ METODĘ SPRAWDZAJĄCA CZY KATALOG I PLIKI (*.txt) ISTNIEJĄ
-                try{
-                    BufferedReader reader = new BufferedReader(new FileReader(katalog));
-                    String liniaPliku = null;
-                    while((liniaPliku = reader.readLine())!=null){
-                        stringBuilder.append(liniaPliku);
-                    }
-                    tekst =stringBuilder.toString();
-                    break;
-                }catch (Exception e){
-                    System.out.println(e + " plik nie istnieje");
-                }
-//JEŚLI TAK TO ZCZYTUJEMY Z NICH TEKST I WYSYŁAMY DO ????utworzListyCharInt(tekst)?????
-                break;
-            } else if (opcja.equals("r")) {
-                System.out.print("Wprowadź tekst: ");
-                tekst = scanner.next();
-                break;
-            } else {
-                System.out.println("Nieprawidłowa opcja. Wybierz 'P' lub 'R'.");
-            }
-        } while (true);
-
 while(true){
     System.out.println("Menu");
     System.out.println("1. Wprowadź tekst ręcznie z klawiatury");
@@ -47,25 +17,39 @@ while(true){
     System.out.println("4. Wyjdź");
     int wybor = scanner.nextByte();
 
-    switch (wybor){
+    switch (wybor) {
+        case 1:
+            System.out.print("Wprowadź tekst: ");
+            tekst = scanner.next();
+            break;
+        case 2:
+            System.out.print("Podaj ścieżkę do katalogu z plikami tekstowymi: ");
+            String katalog = scanner.next();
+            try{
+                BufferedReader reader = new BufferedReader(new FileReader(katalog));
+                String liniaPliku = null;
+                while((liniaPliku = reader.readLine())!=null){
+                    stringBuilder.append(liniaPliku);
+                }
+                tekst =stringBuilder.toString();
+                break;
+            }catch (Exception e){
+                System.out.println(e + " plik nie istnieje");
+            break;
+            }
+        case 3:
+            break;//Pobierz zawartosc URL
+        case 4:
+            System.out.println("Koniec programu.");
+            System.exit(0);
 
+        default:
+            System.out.println("Nieprawidłowy wybór. Wybierz 1, 2 lub 3.");
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
         //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
-        List<Character> listaZnakow = new ArrayList<>();
+        ArrayList<Character> listaZnakow = new ArrayList<>();
         List<Integer> listaWystepowania = new ArrayList<>();
 
         for (char litera = 'a'; litera <= 'z'; litera++) {
