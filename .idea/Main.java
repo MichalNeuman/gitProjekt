@@ -1,17 +1,65 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
+        String tekst = null;
+        StringBuilder stringBuilder = new StringBuilder();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        do {
+            System.out.print("Wczytać z plików (P) czy wprowadzić tekst ręcznie (R)? ");
+            String opcja = scanner.next().toLowerCase();
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+            if (opcja.equals("p")) {
+                System.out.print("Podaj ścieżkę do katalogu z plikami tekstowymi: ");
+                String katalog = scanner.next();
+//NAPISAĆ METODĘ SPRAWDZAJĄCA CZY KATALOG I PLIKI (*.txt) ISTNIEJĄ
+                try{
+                    BufferedReader reader = new BufferedReader(new FileReader(katalog));
+                    String liniaPliku = null;
+                    while((liniaPliku = reader.readLine())!=null){
+                        stringBuilder.append(liniaPliku);
+                    }
+                    tekst =stringBuilder.toString();
+                    break;
+                }catch (Exception e){
+                    System.out.println(e + " plik nie istnieje");
+                }
+//JEŚLI TAK TO ZCZYTUJEMY Z NICH TEKST I WYSYŁAMY DO ????utworzListyCharInt(tekst)?????
+                break;
+            } else if (opcja.equals("r")) {
+                System.out.print("Wprowadź tekst: ");
+                tekst = scanner.next();
+                break;
+            } else {
+                System.out.println("Nieprawidłowa opcja. Wybierz 'P' lub 'R'.");
+            }
+        } while (true);
+
+
+
+        //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
+        List<Character> listaZnakow = new ArrayList<>();
+        List<Integer> listaWystepowania = new ArrayList<>();
+
+        for (char litera = 'a'; litera <= 'z'; litera++) {
+            int counter = 0;
+            for (char znak : tekst.toLowerCase().toCharArray()) {
+                if (znak == litera) {
+                    counter++;
+                }
+            }
+            listaZnakow.add(litera);
+            listaWystepowania.add(counter);
+        }
+        //Wypisanie ile razy co występuje
+        for (int i = 0; i < listaZnakow.size(); i++) {
+            if(listaWystepowania.get(i) != 0) {
+                System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
+            }
         }
     }
 }
