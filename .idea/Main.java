@@ -39,6 +39,29 @@ public class Main {
             }
         } while (true);
 
+while(true){
+    System.out.println("Menu");
+    System.out.println("1. Wprowadź tekst ręcznie z klawiatury");
+    System.out.println("2. Wprowadz tekst z pliku");
+    System.out.println("3. Pobierz zawartosc URL");
+    System.out.println("4. Wyjdź");
+    int wybor = scanner.nextByte();
+
+    switch (wybor){
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
         //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
