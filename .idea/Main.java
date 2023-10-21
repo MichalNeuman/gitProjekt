@@ -43,13 +43,13 @@ public class Main {
                             stringBuilder.append(liniaPliku).append("\n");
                         }
                         tekst = stringBuilder.toString();
-
+                        kontynuuj = false;
                     } catch (FileNotFoundException e) {
                         System.out.println("Plik nie istnieje: " + e.getMessage());
                     } catch (IOException e) {
                         System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
                     }
-                    kontynuuj = false;
+
                     break;
 
                 case 3:
@@ -81,7 +81,7 @@ public class Main {
 
 
         //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
-        ArrayList<Character> listaZnakow = new ArrayList<>();
+        List<Character> listaZnakow = new ArrayList<>();
         List<Integer> listaWystepowania = new ArrayList<>();
 
         for (char litera = 'a'; litera <= 'z'; litera++) {
