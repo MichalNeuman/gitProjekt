@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String tekst = null;
+        StringBuilder stringBuilder = new StringBuilder();
 
         do {
             System.out.print("Wczytać z plików (P) czy wprowadzić tekst ręcznie (R)? ");
@@ -16,6 +17,17 @@ public class Main {
                 System.out.print("Podaj ścieżkę do katalogu z plikami tekstowymi: ");
                 String katalog = scanner.next();
 //NAPISAĆ METODĘ SPRAWDZAJĄCA CZY KATALOG I PLIKI (*.txt) ISTNIEJĄ
+                try{
+                    BufferedReader reader = new BufferedReader(new FileReader(katalog));
+                    String liniaPliku = null;
+                    while((liniaPliku = reader.readLine())!=null){
+                        stringBuilder.append(liniaPliku);
+                    }
+                    tekst =stringBuilder.toString();
+                    break;
+                }catch (Exception e){
+                    System.out.println(e + " plik nie istnieje");
+                }
 //JEŚLI TAK TO ZCZYTUJEMY Z NICH TEKST I WYSYŁAMY DO ????utworzListyCharInt(tekst)?????
                 break;
             } else if (opcja.equals("r")) {
