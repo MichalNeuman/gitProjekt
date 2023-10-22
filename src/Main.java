@@ -11,50 +11,6 @@ public class Main {
         ArrayList<Character> listaZnakow = new ArrayList<>();
         boolean kontynuuj = true;
 
-        while (kontynuuj) {
-            if (kontynuuj == false) {
-                break;
-            }
-            System.out.println("Menu:");
-            System.out.println("1. Podaj Zestaw liter oddzielone przecinkami");
-            System.out.println("2. Użyj zestawu wszystkich liter");
-            System.out.println("3. Użyj zestawu wszystkich liter (razem z polskimi)");
-            System.out.println("4. Wyjdź");
-            System.out.print("");
-
-            int wybor = scanner.nextInt();
-            scanner.nextLine(); // Konsumuj znak nowej linii
-
-            switch (wybor){
-                case 1:
-                    System.out.print("Podaj Zestaw liter oddzielone przecinkami: ");
-                    tekst = scanner.nextLine();
-
-                    for (char x: tekst.toLowerCase().toCharArray()) {
-                        if(x != ',' || x != ' '){
-                            listaZnakow.add(x);
-                        }
-                    }
-                    kontynuuj = false;
-                    break;
-                case 2:
-                    System.out.print("Użyj zestawu wszystkich liter: ");
-                    tekst = "abcdefghijklmnopqrstuwxyz";
-                    kontynuuj = false;
-                    break;
-                case 3:
-                    System.out.print("Użyj zestawu wszystkich liter (razem z polskimi): ");
-                    tekst = "aąbcćdeęfghijklłmnńoópqrstuwxyzżź";
-                    kontynuuj = false;
-                    break;
-                case 4:
-                    System.out.println("Koniec programu.");
-                    kontynuuj = false;
-                    break;
-            }
-        }
-
-        kontynuuj = true;
         while (kontynuuj){
             if(kontynuuj == false){
                 break;
@@ -121,7 +77,8 @@ public class Main {
         }
         System.out.println();
 
-
+        //Wypisanie ile razy co występuje
+        //DrukujCzestotliwosc(listaZnakow, LicznikZnakow(tekst, listaZnakow));
 
         kontynuuj = true;
         while (kontynuuj){
