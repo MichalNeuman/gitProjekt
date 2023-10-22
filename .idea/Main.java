@@ -49,9 +49,7 @@ public class Main {
                     } catch (IOException e) {
                         System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
                     }
-
                     break;
-
                 case 3:
                     System.out.print("Podaj adres URL: ");
                     String url = scanner.nextLine();
@@ -78,11 +76,11 @@ public class Main {
                     System.out.println("Nieprawidłowy wybór. Wybierz 1, 2, 3 lub 4.");
             }
         }
-
+        System.out.flush();
 
         //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
-        List<Character> listaZnakow = new ArrayList<>();
-        List<Integer> listaWystepowania = new ArrayList<>();
+        ArrayList<Character> listaZnakow = new ArrayList<>();
+        ArrayList<Integer> listaWystepowania = new ArrayList<>();
 
         for (char litera = 'a'; litera <= 'z'; litera++) {
             int counter = 0;
@@ -94,12 +92,98 @@ public class Main {
             listaZnakow.add(litera);
             listaWystepowania.add(counter);
         }
-
+/*
         // Wypisz ilość wystąpień
         for (int i = 0; i < listaZnakow.size(); i++) {
             if (listaWystepowania.get(i) != 0) {
                 System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
             }
         }
+ */
+
+        while (kontynuuj){
+            if(kontynuuj == false){
+                break;
+            }
+            System.out.println("Menu:");
+            System.out.println("1. Drukuj histogram do komsoli");
+            System.out.println("2. Drukuj histogram do pliku");
+            System.out.println("3. Wyjdź");
+
+            int wybor = scanner.nextInt();
+            scanner.nextLine(); // Konsumuj znak nowej linii
+
+            switch (wybor) {
+                case 1:
+                    GenerujHistogram(listaZnakow, listaWystepowania);
+                    kontynuuj = false;
+                    break;
+                case 2:
+
+                    GenerujHistogram(listaZnakow, listaWystepowania, );
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    System.out.println("Koniec programu.");
+                    kontynuuj = false;
+                    break;
+                default:
+                    System.out.println("Nieprawidłowy wybór. Wybierz 1, 2 lub 3.");
+            }
+        }
+
+
+
+    }
+    private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania) { // Generowanie histogramu w konsoli
+
+        System.out.println("Histogram częstości występowania liter:");
+
+        for (int i = 0; i < listaZnakow.size(); i++) {
+            char litera = listaZnakow.get(i);
+            int ilosc = listaWystepowania.get(i);
+            System.out.println(litera + ": " + generujLinieHistogramu(ilosc));
+        }
+    }
+    private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania, String nazwaPliku) { // Generowanie histogramu do pliku txt
+        try (PrintWriter writer = new PrintWriter(nazwaPliku)) {
+            writer.println("Histogram częstości występowania liter:");
+
+            for (int i = 0; i < listaZnakow.size(); i++) {
+                char litera = listaZnakow.get(i);
+                int ilosc = listaWystepowania.get(i);
+                writer.println(litera + ": " + generujLinieHistogramu(ilosc));
+            }
+
+            System.out.println("Histogram został zapisany do pliku " + nazwaPliku);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private static String generujLinieHistogramu(int ilosc) {
+        int maxIloscGwiazdek = 20; // Maksymalna liczba znaków do wyświetlenia
+        int skala = 1; // Skala, która pozwala na przeliczenie ilości do maksymalnej liczby gwiazdek
+
+        if (ilosc > maxIloscGwiazdek) {
+            skala = ilosc / maxIloscGwiazdek;
+        }
+
+        StringBuilder histogram = new StringBuilder();
+        for (int i = 0; i < ilosc / skala; i++) {
+            histogram.append("*");
+        }
+        return histogram.toString();
+    }
+    public static int Max(ArrayList<Integer> listaWystepowania) { //Zwraca największy element w Array
+        int najwiekszy = listaWystepowania.get(0);
+
+        for (int i = 0; i < listaWystepowania.size(); i++) {
+            if (listaWystepowania.get(i) > najwiekszy) {
+                najwiekszy = listaWystepowania.get(i);
+            }
+        }
+
+        return najwiekszy; // Zwracamy znaleziony największy element.
     }
 }
