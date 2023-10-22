@@ -75,11 +75,10 @@ public class Main {
                     System.out.println("Nieprawidłowy wybór. Wybierz 1, 2, 3 lub 4.");
             }
         }
-        System.out.println();
+        System.out.println("");
 
-        //Wypisanie ile razy co występuje
-        //DrukujCzestotliwosc(listaZnakow, LicznikZnakow(tekst, listaZnakow));
 
+      
         kontynuuj = true;
         while (kontynuuj){
             if(kontynuuj == false){
