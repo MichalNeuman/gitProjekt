@@ -7,48 +7,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         String tekst = null;
-        String sprawdzTeZnaki = null;
         StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<Character> listaZnakow = new ArrayList<>();
         boolean kontynuuj = true;
 
-        while (kontynuuj) { // Zdefiniuj znaki do sprawdzenia
-            if (kontynuuj == false) {
-                break;
-            }
-            System.out.println("Menu:");
-            System.out.println("1. Podaj Zestaw liter oddzielone przecinkami");
-            System.out.println("2. Użyj zestawu wszystkich liter");
-            System.out.println("3. Użyj zestawu wszystkich liter (razem z polskimi)");
-            System.out.println("4. Wyjdź");
-            System.out.print("");
-
-            int wybor = scanner.nextInt();
-            scanner.nextLine(); // Konsumuj znak nowej linii
-            System.out.print("");
-
-            switch (wybor){
-                case 1:
-                    System.out.print("Podaj Zestaw liter oddzielone przecinkami: ");
-                    sprawdzTeZnaki = scanner.nextLine();
-                    kontynuuj = false;
-                    break;
-                case 2:
-                    sprawdzTeZnaki = "abcdefghijklmnopqrstuwxyz";
-                    kontynuuj = false;
-                    break;
-                case 3:
-                    sprawdzTeZnaki = "aąbcćdeęfghijklłmnńoópqrstuwxyzżź";
-                    kontynuuj = false;
-                    break;
-                case 4:
-                    System.out.println("Koniec programu.");
-                    kontynuuj = false;
-                    break;
-            }
-        }
-
-        kontynuuj = true;
-        while (kontynuuj){ // W jaki sposób pobrać tekst
+        while (kontynuuj){
             if(kontynuuj == false){
                 break;
             }
@@ -61,7 +24,6 @@ public class Main {
 
             int wybor = scanner.nextInt();
             scanner.nextLine(); // Konsumuj znak nowej linii
-            System.out.print("");
 
             switch (wybor) {
                 case 1:
@@ -115,10 +77,11 @@ public class Main {
         }
         System.out.println();
 
-
+        //Wypisanie ile razy co występuje
+        //DrukujCzestotliwosc(listaZnakow, LicznikZnakow(tekst, listaZnakow));
 
         kontynuuj = true;
-        while (kontynuuj){ // Jak wydrukować histogram
+        while (kontynuuj){
             if(kontynuuj == false){
                 break;
             }
@@ -126,20 +89,20 @@ public class Main {
             System.out.println("1. Drukuj histogram do konsoli");
             System.out.println("2. Drukuj histogram do pliku");
             System.out.println("3. Wyjdź");
+            System.out.flush();
 
             int wybor = scanner.nextInt(); // pobiera wybór użytkownika
-            System.out.print("");
 
             switch (wybor) {
                 case 1:
-                    GenerujHistogram(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki)));
+                    GenerujHistogram(listaZnakow, LicznikZnakow(tekst, listaZnakow));
                     kontynuuj = false;
                     break;
                 case 2:
                     System.out.print("Podaj nazwę pliku tekstowego: ");
                     String nazwaPliku = scanner.nextLine();
 
-                    GenerujHistogram(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki)), nazwaPliku);
+                    GenerujHistogram(listaZnakow, LicznikZnakow(tekst, listaZnakow), nazwaPliku);
                     /*
                     try {
                         BufferedReader reader = new BufferedReader(new FileReader(nazwaPliku));
@@ -217,16 +180,6 @@ public class Main {
             histogram.append("*");
         }
         return histogram.toString();
-    }
-    private static ArrayList<Character> ZmianaDoChar(String sprawdzTeZnaki){
-        ArrayList<Character> listaZnakow = new ArrayList<>();
-
-        for (char x: sprawdzTeZnaki.toLowerCase().toCharArray()) {
-            if(x != ',' || x != ' '){
-                listaZnakow.add(x);
-            }
-        }
-        return listaZnakow;
     }
     private static int ObliczSkale(ArrayList<Integer> listaWystepowania){ // Oblicza skale w jakiej się będzie wyświetlał histogram w przypadku otrzymania dużej liczby danych
         int skala = 1;
