@@ -93,12 +93,10 @@ public class Main {
                 listaWystepowania.add(counter);
             }
         }
-        /*
         //Wypisanie ile razy co występuje
         for (int i = 0; i < listaZnakow.size(); i++) {
             System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
         }
-         */
 
         kontynuuj = true;
         while (kontynuuj){
@@ -137,6 +135,7 @@ public class Main {
                         System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
                     }
                      */
+                    kontynuuj = false;
                     break;
                 case 3:
                     System.out.println("Koniec programu.");
@@ -148,13 +147,12 @@ public class Main {
         }
     }
     private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania) { // Generowanie histogramu w konsoli
-
         System.out.println("Histogram częstości występowania liter:");
 
         for (int i = 0; i < listaZnakow.size(); i++) {
             char litera = listaZnakow.get(i);
             int ilosc = listaWystepowania.get(i);
-            System.out.println(litera + ": " + generujLinieHistogramu(ilosc));
+            System.out.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
         }
     }
     private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania, String nazwaPliku) { // Generowanie histogramu do pliku txt
@@ -164,27 +162,27 @@ public class Main {
             for (int i = 0; i < listaZnakow.size(); i++) {
                 char litera = listaZnakow.get(i);
                 int ilosc = listaWystepowania.get(i);
-                writer.println(litera + ": " + generujLinieHistogramu(ilosc));
+                writer.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
             }
 
             System.out.println("Histogram został zapisany do pliku " + nazwaPliku);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
-    private static String generujLinieHistogramu(int ilosc) {
-        int maxIloscGwiazdek = 20; // Maksymalna liczba znaków do wyświetlenia
-        int skala = 1; // Skala, która pozwala na przeliczenie ilości do maksymalnej liczby gwiazdek
-
-        if (ilosc > maxIloscGwiazdek) {
-            skala = ilosc / maxIloscGwiazdek;
-        }
-
+    private static String generujLinieHistogramu(int ilosc, int skala) {
         StringBuilder histogram = new StringBuilder();
-        for (int i = 0; i < ilosc / skala; i++) {
+        for (int i = 0; i < (ilosc / skala); i++) {
             histogram.append("*");
         }
         return histogram.toString();
+    }
+    private static int ObliczSkale(ArrayList<Integer> listaWystepowania){ // Oblicza skale w jakiej się będzie wyświetlał histogram w przypadku otrzymania dużej liczby danych
+        int skala = 1;
+        if (Max(listaWystepowania) > 20) {
+            skala = Max(listaWystepowania) / 20;
+        }
+        return skala;
     }
     public static int Max(ArrayList<Integer> listaWystepowania) { //Zwraca największy element w Array
         int najwiekszy = listaWystepowania.get(0);
