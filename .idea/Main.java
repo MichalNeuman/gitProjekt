@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List;
 import java.io.*;
 import java.net.*;
 
@@ -9,8 +8,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String tekst = null;
         StringBuilder stringBuilder = new StringBuilder();
+        ArrayList<Character> listaZnakow = new ArrayList<>();
         boolean kontynuuj = true;
-
 
         while (kontynuuj){
             if(kontynuuj == false){
@@ -21,7 +20,7 @@ public class Main {
             System.out.println("2. Wprowadź tekst z pliku");
             System.out.println("3. Pobierz zawartość URL");
             System.out.println("4. Wyjdź");
-            System.out.flush();
+            System.out.print("");
 
             int wybor = scanner.nextInt();
             scanner.nextLine(); // Konsumuj znak nowej linii
@@ -76,28 +75,10 @@ public class Main {
                     System.out.println("Nieprawidłowy wybór. Wybierz 1, 2, 3 lub 4.");
             }
         }
-        System.out.flush();
+        System.out.println("");
 
-        //Sprawdzanie powtarzalności i zapisywanie o jaki znak chodzi do listy listaZnakow oraz ile razy występuje w liście listaWystapien
-        ArrayList<Character> listaZnakow = new ArrayList<>();
-        ArrayList<Integer> listaWystepowania = new ArrayList<>();
 
-        for (char litera = 'a'; litera <= 'z'; litera++) {
-            String tekstLower = tekst.toLowerCase();
-            int counter = 0;
-            for (char znak : tekstLower.toCharArray()) {
-                if (znak == litera) { counter++; }
-            }
-            if(counter != 0){
-                listaZnakow.add(litera);
-                listaWystepowania.add(counter);
-            }
-        }
-        //Wypisanie ile razy co występuje
-        for (int i = 0; i < listaZnakow.size(); i++) {
-            System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
-        }
-
+      
         kontynuuj = true;
         while (kontynuuj){
             if(kontynuuj == false){
@@ -113,14 +94,14 @@ public class Main {
 
             switch (wybor) {
                 case 1:
-                    GenerujHistogram(listaZnakow, listaWystepowania);
+                    GenerujHistogram(listaZnakow, LicznikZnakow(tekst, listaZnakow));
                     kontynuuj = false;
                     break;
                 case 2:
                     System.out.print("Podaj nazwę pliku tekstowego: ");
                     String nazwaPliku = scanner.nextLine();
 
-                    GenerujHistogram(listaZnakow, listaWystepowania, nazwaPliku);
+                    GenerujHistogram(listaZnakow, LicznikZnakow(tekst, listaZnakow), nazwaPliku);
                     /*
                     try {
                         BufferedReader reader = new BufferedReader(new FileReader(nazwaPliku));
@@ -146,13 +127,34 @@ public class Main {
             }
         }
     }
+    private static ArrayList<Integer> LicznikZnakow(String tekst, ArrayList<Character> listaZnakow){
+        ArrayList<Integer> listaWystepowania = new ArrayList<>();
+
+        for (char litera: listaZnakow) {
+            int counter = 0;
+            for (char znak : tekst.toCharArray()) {
+                if (znak == litera) { counter++; }
+            }
+            listaWystepowania.add(counter);
+        }
+        return listaWystepowania;
+    }
+    private static void DrukujCzestotliwosc(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania){
+        for (int i = 0; i < listaZnakow.size(); i++) {
+            if(listaWystepowania.get(i) != 0){
+                System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
+            }
+        }
+    }
     private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania) { // Generowanie histogramu w konsoli
         System.out.println("Histogram częstości występowania liter:");
 
         for (int i = 0; i < listaZnakow.size(); i++) {
-            char litera = listaZnakow.get(i);
-            int ilosc = listaWystepowania.get(i);
-            System.out.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
+            if(listaWystepowania.get(i) != 0){
+                char litera = listaZnakow.get(i);
+                int ilosc = listaWystepowania.get(i);
+                System.out.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
+            }
         }
     }
     private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania, String nazwaPliku) { // Generowanie histogramu do pliku txt
@@ -160,11 +162,12 @@ public class Main {
             writer.println("Histogram częstości występowania liter:");
 
             for (int i = 0; i < listaZnakow.size(); i++) {
-                char litera = listaZnakow.get(i);
-                int ilosc = listaWystepowania.get(i);
-                writer.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
+                if(listaWystepowania.get(i) != 0) {
+                    char litera = listaZnakow.get(i);
+                    int ilosc = listaWystepowania.get(i);
+                    writer.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
+                }
             }
-
             System.out.println("Histogram został zapisany do pliku " + nazwaPliku);
         } catch (FileNotFoundException e) {
             System.out.println(e);
