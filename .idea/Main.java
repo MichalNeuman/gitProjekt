@@ -115,7 +115,7 @@ public class Main {
         }
         System.out.println();
 
-
+        //DrukujCzestotliwosc(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki))); // Drukuje częstotliwość znaków
 
         kontynuuj = true;
         while (kontynuuj){ // Jak wydrukować histogram
@@ -214,7 +214,7 @@ public class Main {
     private static String generujLinieHistogramu(int ilosc, int skala) {
         StringBuilder histogram = new StringBuilder();
         for (int i = 0; i < (ilosc / skala); i++) {
-            histogram.append("*");
+            histogram.append("█");
         }
         return histogram.toString();
     }
@@ -230,8 +230,8 @@ public class Main {
     }
     private static int ObliczSkale(ArrayList<Integer> listaWystepowania){ // Oblicza skale w jakiej się będzie wyświetlał histogram w przypadku otrzymania dużej liczby danych
         int skala = 1;
-        if (Max(listaWystepowania) > 20) {
-            skala = Max(listaWystepowania) / 20;
+        if (Max(listaWystepowania) > 50) {
+            skala = Max(listaWystepowania) / 50;
         }
         return skala;
     }
