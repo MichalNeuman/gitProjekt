@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31359ffa-1252-4dee-9f3e-cbe0c32c4f9f" name="Changes" comment="Działający generator histogramu z dynamiczną skalą. Możliwość wyboru źródła tekstu oraz miejscem generowania histogramu" />
+    <list default="true" id="31359ffa-1252-4dee-9f3e-cbe0c32c4f9f" name="Changes" comment="refactor kodu + dadanie możliwości sprawdzania znaków podanych przez użytkownika">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +86,8 @@
       <workItem from="1697982783886" duration="1633000" />
       <workItem from="1697985553404" duration="5000" />
       <workItem from="1697985567111" duration="280000" />
+      <workItem from="1698001797035" duration="115000" />
+      <workItem from="1698002880795" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="Dodano generacje histogramu + tworzenie switcha aby wybrać czy histogram ma się drukować w konsoli czy do pliku">
       <option name="closed" value="true" />
@@ -117,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697982833825</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactor kodu + dadanie możliwości sprawdzania znaków podanych przez użytkownika">
+      <option name="closed" value="true" />
+      <created>1697986647946</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1697986647946</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +150,7 @@
     <MESSAGE value="Dodano generacje histogramu + tworzenie switcha aby wybrać czy histogram ma się drukować w konsoli czy do pliku" />
     <MESSAGE value="Dodano generacje histogramu + tworzenie switcha aby wybrać czy histogram ma się drukować w konsoli czy do pliku v2" />
     <MESSAGE value="Działający generator histogramu z dynamiczną skalą. Możliwość wyboru źródła tekstu oraz miejscem generowania histogramu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Działający generator histogramu z dynamiczną skalą. Możliwość wyboru źródła tekstu oraz miejscem generowania histogramu" />
+    <MESSAGE value="refactor kodu + dadanie możliwości sprawdzania znaków podanych przez użytkownika" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor kodu + dadanie możliwości sprawdzania znaków podanych przez użytkownika" />
   </component>
 </project>
