@@ -14,7 +14,6 @@ public class Main {
 
         while (kontynuuj){
             if(kontynuuj == false){
-                System.out.println(kontynuuj);
                 break;
             }
             System.out.println("Menu:");
@@ -22,6 +21,7 @@ public class Main {
             System.out.println("2. Wprowadź tekst z pliku");
             System.out.println("3. Pobierz zawartość URL");
             System.out.println("4. Wyjdź");
+            System.out.flush();
 
             int wybor = scanner.nextInt();
             scanner.nextLine(); // Konsumuj znak nowej linii
@@ -83,35 +83,35 @@ public class Main {
         ArrayList<Integer> listaWystepowania = new ArrayList<>();
 
         for (char litera = 'a'; litera <= 'z'; litera++) {
+            String tekstLower = tekst.toLowerCase();
             int counter = 0;
-            for (char znak : tekst.toLowerCase().toCharArray()) {
-                if (znak == litera) {
-                    counter++;
-                }
+            for (char znak : tekstLower.toCharArray()) {
+                if (znak == litera) { counter++; }
             }
-            listaZnakow.add(litera);
-            listaWystepowania.add(counter);
+            if(counter != 0){
+                listaZnakow.add(litera);
+                listaWystepowania.add(counter);
+            }
         }
-/*
-        // Wypisz ilość wystąpień
+        /*
+        //Wypisanie ile razy co występuje
         for (int i = 0; i < listaZnakow.size(); i++) {
-            if (listaWystepowania.get(i) != 0) {
-                System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
-            }
+            System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
         }
- */
+         */
 
+        kontynuuj = true;
         while (kontynuuj){
             if(kontynuuj == false){
                 break;
             }
             System.out.println("Menu:");
-            System.out.println("1. Drukuj histogram do komsoli");
+            System.out.println("1. Drukuj histogram do konsoli");
             System.out.println("2. Drukuj histogram do pliku");
             System.out.println("3. Wyjdź");
+            System.out.flush();
 
-            int wybor = scanner.nextInt();
-            scanner.nextLine(); // Konsumuj znak nowej linii
+            int wybor = scanner.nextInt(); // pobiera wybór użytkownika
 
             switch (wybor) {
                 case 1:
@@ -119,12 +119,26 @@ public class Main {
                     kontynuuj = false;
                     break;
                 case 2:
+                    System.out.print("Podaj nazwę pliku tekstowego: ");
+                    String nazwaPliku = scanner.nextLine();
 
-                    GenerujHistogram(listaZnakow, listaWystepowania, );
+                    GenerujHistogram(listaZnakow, listaWystepowania, nazwaPliku);
+                    /*
+                    try {
+                        BufferedReader reader = new BufferedReader(new FileReader(nazwaPliku));
+                        String liniaPliku;
+                        if ((liniaPliku = reader.readLine()) != null) {
+
+                        }
+                        kontynuuj = false;
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Plik nie istnieje: " + e.getMessage());
+                    } catch (IOException e) {
+                        System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
+                    }
+                     */
                     break;
                 case 3:
-                    break;
-                case 4:
                     System.out.println("Koniec programu.");
                     kontynuuj = false;
                     break;
@@ -132,9 +146,6 @@ public class Main {
                     System.out.println("Nieprawidłowy wybór. Wybierz 1, 2 lub 3.");
             }
         }
-
-
-
     }
     private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania) { // Generowanie histogramu w konsoli
 
