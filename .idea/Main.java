@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.*;
 import java.net.*;
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -55,8 +56,9 @@ public class Main {
             System.out.println("Menu:");
             System.out.println("1. Wprowadź tekst ręcznie z klawiatury");
             System.out.println("2. Wprowadź tekst z pliku");
-            System.out.println("3. Pobierz zawartość URL");
-            System.out.println("4. Wyjdź");
+            System.out.println("3. Wprowadż tekst z katalogu");
+            System.out.println("4. Pobierz zawartość URL");
+            System.out.println("5. Wyjdź");
             System.out.print("");
 
             int wybor = scanner.nextInt();
@@ -88,6 +90,37 @@ public class Main {
                     }
                     break;
                 case 3:
+                    System.out.println("Podaj sciezke do katalogu");
+                    String sciezkaDoKatalogu = scanner.nextLine();
+                    File folder = new File(sciezkaDoKatalogu);
+                    File[] pliki = folder.listFiles();
+                    if (pliki != null) {
+                        for (File plik : pliki) {
+                            if (plik.isFile()) {
+                                System.out.println("Odczytywanie zawartości pliku: " + plik.getName());
+
+                                try {
+                                    Scanner scanner1 = new Scanner(plik);
+
+                                    while (scanner1.hasNextLine()) {
+                                        stringBuilder.append(scanner1.nextLine());
+
+                                    }
+
+                                    scanner1.close();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        tekst = stringBuilder.toString();
+                        kontynuuj = false;
+                        break;
+                    } else {
+                        System.out.println("Katalog jest pusty lub nie istnieje.");
+                    }
+                    break;
+                case 4:
                     System.out.print("Podaj adres URL: ");
                     String url = scanner.nextLine();
                     try {
@@ -105,7 +138,7 @@ public class Main {
                         System.err.println("Błąd podczas pobierania zawartości strony: " + e.getMessage());
                     }
                     break;
-                case 4:
+                case 5:
                     System.out.println("Koniec programu.");
                     kontynuuj = false;
                     break;
@@ -246,4 +279,5 @@ public class Main {
 
         return najwiekszy; // Zwracamy znaleziony największy element.
     }
+
 }
