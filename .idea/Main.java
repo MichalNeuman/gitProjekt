@@ -13,7 +13,7 @@ public class Main {
         boolean kontynuuj = true;
 
         while (kontynuuj) { // Zdefiniuj znaki do sprawdzenia
-            if (kontynuuj == false) {
+            if (!kontynuuj) {
                 break;
             }
             System.out.println("Menu:");
@@ -50,7 +50,7 @@ public class Main {
 
         kontynuuj = true;
         while (kontynuuj){ // W jaki sposób pobrać tekst
-            if(kontynuuj == false){
+            if(!kontynuuj){
                 break;
             }
             System.out.println("Menu:");
@@ -104,9 +104,7 @@ public class Main {
 
                                     while (scanner1.hasNextLine()) {
                                         stringBuilder.append(scanner1.nextLine());
-
                                     }
-
                                     scanner1.close();
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -152,7 +150,7 @@ public class Main {
 
         kontynuuj = true;
         while (kontynuuj){ // Jak wydrukować histogram
-            if(kontynuuj == false){
+            if(!kontynuuj){
                 break;
             }
             System.out.println("Menu:");
@@ -255,7 +253,7 @@ public class Main {
         ArrayList<Character> listaZnakow = new ArrayList<>();
 
         for (char x: sprawdzTeZnaki.toLowerCase().toCharArray()) {
-            if(x != ',' || x != ' '){
+            if(x != ',' && x != ' '){
                 listaZnakow.add(x);
             }
         }
@@ -276,8 +274,6 @@ public class Main {
                 najwiekszy = listaWystepowania.get(i);
             }
         }
-
         return najwiekszy; // Zwracamy znaleziony największy element.
     }
-
 }
