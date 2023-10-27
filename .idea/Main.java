@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.io.File;
 
+
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
@@ -168,23 +169,26 @@ public class Main {
                     kontynuuj = false;
                     break;
                 case 2:
-                  //  try {
-                    System.out.print("Podaj naazwę pliku tekstowego:: ");
+
+                    System.out.print("Podaj nazwę pliku tek stowego: ");
                     String nazwaPliku = scanner.nextLine();
 
                     GenerujHistogram(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki)), nazwaPliku);
-
-
+                    /*
+                    try {
+                        BufferedReader reader = new BufferedReader(new FileReader(nazwaPliku));
                         String liniaPliku;
-                        if ((liniaPliku = readerConsoli.readLine()) != null) {
-                            kontynuuj = false;
+                        if ((liniaPliku = reader.readLine()) != null) {
+
                         }
-                  /*  } catch (FileNotFoundException e) {
+                        kontynuuj = false;
+                    } catch (FileNotFoundException e) {
                         System.out.println("Plik nie istnieje: " + e.getMessage());
                     } catch (IOException e) {
                         System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
-                    }*/
-
+                    }
+                     */
+                    kontynuuj = false;
                     break;
                 case 3:
                     System.out.println("Koniec programu.");
