@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="31359ffa-1252-4dee-9f3e-cbe0c32c4f9f" name="Changes" comment="Zmiana spoce'u- użytkownik może zdefiniować znaki jakich ma szukać program">
       <change beforePath="$PROJECT_DIR$/.idea/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gitProjekt/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gitProjekt/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gitProjekt/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gitProjekt/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/gitProjekt/production/gitProjekt/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/gitProjekt/production/gitProjekt/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

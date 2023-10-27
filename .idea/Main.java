@@ -10,6 +10,7 @@ public class Main {
         String tekst = null;
         String sprawdzTeZnaki = null;
         StringBuilder stringBuilder = new StringBuilder();
+        BufferedReader readerConsoli = new BufferedReader(new InputStreamReader(System.in));
         boolean kontynuuj = true;
 
         while (kontynuuj) { // Zdefiniuj znaki do sprawdzenia
@@ -167,25 +168,22 @@ public class Main {
                     kontynuuj = false;
                     break;
                 case 2:
-                    System.out.print("Podaj nazwę pliku tekstowego: ");
-                    String nazwaPliku = scanner.nextLine();
+                    System.out.print("Podaj naazwę pliku tekstowego: ");
+                    String nazwaPliku = readerConsoli.readLine();
 
                     GenerujHistogram(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki)), nazwaPliku);
-                    /*
-                    try {
-                        BufferedReader reader = new BufferedReader(new FileReader(nazwaPliku));
-                        String liniaPliku;
-                        if ((liniaPliku = reader.readLine()) != null) {
 
+                    try {
+                        String liniaPliku;
+                        if ((liniaPliku = readerConsoli.readLine()) != null) {
+                            kontynuuj = false;
                         }
-                        kontynuuj = false;
                     } catch (FileNotFoundException e) {
                         System.out.println("Plik nie istnieje: " + e.getMessage());
                     } catch (IOException e) {
                         System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
                     }
-                     */
-                    kontynuuj = false;
+
                     break;
                 case 3:
                     System.out.println("Koniec programu.");
