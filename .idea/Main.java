@@ -13,7 +13,7 @@ public class Main {
         boolean kontynuuj = true;
 
         while (kontynuuj) { // Zdefiniuj znaki do sprawdzenia
-            if (kontynuuj == false) {
+            if (!kontynuuj) {
                 break;
             }
             System.out.println("Menu:");
@@ -50,7 +50,7 @@ public class Main {
 
         kontynuuj = true;
         while (kontynuuj){ // W jaki sposób pobrać tekst
-            if(kontynuuj == false){
+            if(!kontynuuj){
                 break;
             }
             System.out.println("Menu:");
@@ -146,11 +146,11 @@ public class Main {
         }
         System.out.println();
 
-        DrukujCzestotliwosc(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki))); // Drukuje częstotliwość znaków
+        //DrukujCzestotliwosc(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki))); // Drukuje częstotliwość znaków
 
         kontynuuj = true;
         while (kontynuuj){ // Jak wydrukować histogram
-            if(kontynuuj == false){
+            if(!kontynuuj){
                 break;
             }
             System.out.println("Menu:");
