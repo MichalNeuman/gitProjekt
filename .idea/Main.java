@@ -168,21 +168,22 @@ public class Main {
                     kontynuuj = false;
                     break;
                 case 2:
-                    System.out.print("Podaj naazwę pliku tekstowego: ");
-                    String nazwaPliku = readerConsoli.readLine();
+                  //  try {
+                    System.out.print("Podaj naazwę pliku tekstowego:: ");
+                    String nazwaPliku = scanner.nextLine();
 
                     GenerujHistogram(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki)), nazwaPliku);
 
-                    try {
+
                         String liniaPliku;
                         if ((liniaPliku = readerConsoli.readLine()) != null) {
                             kontynuuj = false;
                         }
-                    } catch (FileNotFoundException e) {
+                  /*  } catch (FileNotFoundException e) {
                         System.out.println("Plik nie istnieje: " + e.getMessage());
                     } catch (IOException e) {
                         System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
-                    }
+                    }*/
 
                     break;
                 case 3:
