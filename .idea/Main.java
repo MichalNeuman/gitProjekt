@@ -146,7 +146,7 @@ public class Main {
         }
         System.out.println();
 
-        dRuKuJcZeStOtLiWoSc(zMiAnAdOcHaR(sPrAwDzTeZnAkI), lIcZnIkZnAkOw(tEkSt, zMiAnAdOcHaR(sPrAwDzTeZnAkI))); // Drukuje częstotliwość znaków
+        //dRuKuJcZeStOtLiWoSc(zMiAnAdOcHaR(sPrAwDzTeZnAkI), lIcZnIkZnAkOw(tEkSt, zMiAnAdOcHaR(sPrAwDzTeZnAkI))); // Drukuje częstotliwość znaków
 
         kOnTyNuUj = true;
         while (kOnTyNuUj){ // Jak wydrukować histogram
@@ -168,7 +168,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.print("Podaj nazwę pliku tekstowego: ");
-                    String nAzWaPlIkU = sCaNnEr.nextLine();
+                    String nAzWaPlIkU = sCaNnEr.next();
 
                     gEnErUjHiStOgRaM(zMiAnAdOcHaR(sPrAwDzTeZnAkI), lIcZnIkZnAkOw(tEkSt, zMiAnAdOcHaR(sPrAwDzTeZnAkI)), nAzWaPlIkU);
                     /*
