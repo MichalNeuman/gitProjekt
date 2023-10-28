@@ -52,14 +52,14 @@ Program oferuje prosty interfejs konsolowy, który pozwala użytkownikowi wybier
 
 ## Autor
 
-Ten program został napisany przez [Twoje Imię i Nazwisko].
+Ten program został napisany przez wybitnych studntów.
 
 ## Licencja
 
-Ten program jest udostępniany na licencji [rodzaj licencji]. Szczegóły licencji można znaleźć w pliku `LICENSE.md`.
+Ten program jest udostępniany na licencji Freeware. Szczegóły licencji można znaleźć w pliku `LICENSE.md`.
 
 ## Kontakt
 
 Jeśli masz pytania lub napotkałeś problemy z programem, skontaktuj się z nami pod adresem szybkapomoc@zyx.gov.
 
-Dziękujemy za korzystanie z naszego programu! Życzymy udanych analiz histogramów częstości liter.
+Dziękujemy za korzystanie z naszego programu! Życzymy udanych analiz.
