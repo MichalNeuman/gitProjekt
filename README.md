@@ -13,15 +13,13 @@ Program posiada następujące funkcje:
    - Użytkownik może wprowadzić tekst ręcznie w konsoli.
    - Możliwość wczytania tekstu z pliku na dysku.
    - Pobranie tekstu z katalogu, w którym program przeszuka wszystkie pliki tekstowe i policzy histogram dla całego katalogu.
-
-2. **Pobieranie tekstu z adresu URL:**
    - Użytkownik może podać adres URL strony internetowej, z której program wyekstrahuje tekst i obliczy histogram.
 
-3. **Wybór zestawu znaków:**
+2. **Wybór zestawu znaków:**
    - Użytkownik może zdefiniować własny zestaw znaków, które program ma uwzględniać w obliczeniach.
    - Dostępne są również predefiniowane zestawy znaków, w tym zestaw z polskimi znakami.
 
-4. **Generowanie histogramu:**
+3. **Generowanie histogramu:**
    - Histogram zostaje wygenerowany na podstawie tekstu wejściowego.
    - Możliwość wyboru formatu generowanego histogramu (konsola lub plik).
 
