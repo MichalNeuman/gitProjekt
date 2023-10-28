@@ -6,14 +6,14 @@ import java.io.File;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner scanner = new Scanner(System.in);
-        String tekst = null;
-        String sprawdzTeZnaki = null;
-        StringBuilder stringBuilder = new StringBuilder();
-        boolean kontynuuj = true;
+        Scanner sCaNnEr = new Scanner(System.in);
+        String tEkSt = null;
+        String sPrAwDzTeZnAkI = null;
+        StringBuilder sTrInGbUiLdEr = new StringBuilder();
+        boolean kOnTyNuUj = true;
 
-        while (kontynuuj) { // Zdefiniuj znaki do sprawdzenia
-            if (!kontynuuj) {
+        while (kOnTyNuUj) { // Zdefiniuj znaki do sprawdzenia
+            if (!kOnTyNuUj) {
                 break;
             }
             System.out.println("Menu:");
@@ -23,34 +23,34 @@ public class Main {
             System.out.println("4. Wyjdź");
             System.out.print("");
 
-            int wybor = scanner.nextInt();
-            scanner.nextLine(); // Konsumuj znak nowej linii
+            int wYbOr = sCaNnEr.nextInt();
+            sCaNnEr.nextLine(); // Konsumuj znak nowej linii
             System.out.print("");
 
-            switch (wybor){
+            switch (wYbOr){
                 case 1:
                     System.out.print("Podaj Zestaw liter oddzielone przecinkami: ");
-                    sprawdzTeZnaki = scanner.nextLine();
-                    kontynuuj = false;
+                    sPrAwDzTeZnAkI = sCaNnEr.nextLine();
+                    kOnTyNuUj = false;
                     break;
                 case 2:
-                    sprawdzTeZnaki = "abcdefghijklmnopqrstuwxyz";
-                    kontynuuj = false;
+                    sPrAwDzTeZnAkI = "abcdefghijklmnopqrstuwxyz";
+                    kOnTyNuUj = false;
                     break;
                 case 3:
-                    sprawdzTeZnaki = "aąbcćdeęfghijklłmnńoópqrstuwxyzżź";
-                    kontynuuj = false;
+                    sPrAwDzTeZnAkI = "aąbcćdeęfghijklłmnńoópqrstuwxyzżź";
+                    kOnTyNuUj = false;
                     break;
                 case 4:
                     System.out.println("Koniec programu.");
-                    kontynuuj = false;
+                    kOnTyNuUj = false;
                     break;
             }
         }
 
-        kontynuuj = true;
-        while (kontynuuj){ // W jaki sposób pobrać tekst
-            if(!kontynuuj){
+        kOnTyNuUj = true;
+        while (kOnTyNuUj){ // W jaki sposób pobrać tekst
+            if(!kOnTyNuUj){
                 break;
             }
             System.out.println("Menu:");
@@ -61,28 +61,28 @@ public class Main {
             System.out.println("5. Wyjdź");
             System.out.print("");
 
-            int wybor = scanner.nextInt();
-            scanner.nextLine(); // Konsumuj znak nowej linii
+            int wYbOr = sCaNnEr.nextInt();
+            sCaNnEr.nextLine(); // Konsumuj znak nowej linii
             System.out.print("");
 
-            switch (wybor) {
+            switch (wYbOr) {
                 case 1:
                     System.out.print("Wprowadź tekst: ");
-                    tekst = scanner.nextLine();
-                    kontynuuj = false;
+                    tEkSt = sCaNnEr.nextLine();
+                    kOnTyNuUj = false;
                     break;
                 case 2:
                     System.out.print("Podaj ścieżkę do pliku tekstowego: ");
-                    String sciezkaPliku = scanner.nextLine();
+                    String sCiEzKaPliKu = sCaNnEr.nextLine();
 
                     try {
-                        BufferedReader reader = new BufferedReader(new FileReader(sciezkaPliku));
-                        String liniaPliku;
-                        while ((liniaPliku = reader.readLine()) != null) {
-                            stringBuilder.append(liniaPliku).append("\n");
+                        BufferedReader reader = new BufferedReader(new FileReader(sCiEzKaPliKu));
+                        String lInIaPlIkU;
+                        while ((lInIaPlIkU = reader.readLine()) != null) {
+                            sTrInGbUiLdEr.append(lInIaPlIkU).append("\n");
                         }
-                        tekst = stringBuilder.toString();
-                        kontynuuj = false;
+                        tEkSt = sTrInGbUiLdEr.toString();
+                        kOnTyNuUj = false;
                     } catch (FileNotFoundException e) {
                         System.out.println("Plik nie istnieje: " + e.getMessage());
                     } catch (IOException e) {
@@ -91,28 +91,28 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Podaj sciezke do katalogu");
-                    String sciezkaDoKatalogu = scanner.nextLine();
-                    File folder = new File(sciezkaDoKatalogu);
-                    File[] pliki = folder.listFiles();
-                    if (pliki != null) {
-                        for (File plik : pliki) {
-                            if (plik.isFile()) {
-                                System.out.println("Odczytywanie zawartości pliku: " + plik.getName());
+                    String sCiEzKaDoKaTaLoGu = sCaNnEr.nextLine();
+                    File fOlDeR = new File(sCiEzKaDoKaTaLoGu);
+                    File[] pLiKi = fOlDeR.listFiles();
+                    if (pLiKi != null) {
+                        for (File pLiK : pLiKi) {
+                            if (pLiK.isFile()) {
+                                System.out.println("Odczytywanie zawartości pliku: " + pLiK.getName());
 
                                 try {
-                                    Scanner scanner1 = new Scanner(plik);
+                                    Scanner sCaNnEr1 = new Scanner(pLiK);
 
-                                    while (scanner1.hasNextLine()) {
-                                        stringBuilder.append(scanner1.nextLine());
+                                    while (sCaNnEr1.hasNextLine()) {
+                                        sTrInGbUiLdEr.append(sCaNnEr1.nextLine());
                                     }
-                                    scanner1.close();
+                                    sCaNnEr1.close();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
                             }
                         }
-                        tekst = stringBuilder.toString();
-                        kontynuuj = false;
+                        tEkSt = sTrInGbUiLdEr.toString();
+                        kOnTyNuUj = false;
                         break;
                     } else {
                         System.out.println("Katalog jest pusty lub nie istnieje.");
@@ -120,16 +120,16 @@ public class Main {
                     break;
                 case 4:
                     System.out.print("Podaj adres URL: ");
-                    String url = scanner.nextLine();
+                    String uRl = sCaNnEr.nextLine();
                     try {
-                        URL website = new URL(url);
-                        BufferedReader urlReader = new BufferedReader(new InputStreamReader(website.openStream()));
-                        String line;
-                        while ((line = urlReader.readLine()) != null) {
-                            stringBuilder.append(line).append("\n");
+                        URL wEbSiTe = new URL(uRl);
+                        BufferedReader uRlReAdEr = new BufferedReader(new InputStreamReader(wEbSiTe.openStream()));
+                        String lInE;
+                        while ((lInE = uRlReAdEr.readLine()) != null) {
+                            sTrInGbUiLdEr.append(lInE).append("\n");
                         }
-                        tekst = stringBuilder.toString();
-                        kontynuuj = false;
+                        tEkSt = sTrInGbUiLdEr.toString();
+                        kOnTyNuUj = false;
                     } catch (MalformedURLException e) {
                         System.err.println("Nieprawidłowy adres URL: " + e.getMessage());
                     } catch (IOException e) {
@@ -138,7 +138,7 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Koniec programu.");
-                    kontynuuj = false;
+                    kOnTyNuUj = false;
                     break;
                 default:
                     System.out.println("Nieprawidłowy wybór. Wybierz 1, 2, 3 lub 4.");
@@ -148,9 +148,9 @@ public class Main {
 
         //DrukujCzestotliwosc(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki))); // Drukuje częstotliwość znaków
 
-        kontynuuj = true;
-        while (kontynuuj){ // Jak wydrukować histogram
-            if(!kontynuuj){
+        kOnTyNuUj = true;
+        while (kOnTyNuUj){ // Jak wydrukować histogram
+            if(!kOnTyNuUj){
                 break;
             }
             System.out.println("Menu:");
@@ -158,19 +158,19 @@ public class Main {
             System.out.println("2. Drukuj histogram do pliku");
             System.out.println("3. Wyjdź");
 
-            int wybor = scanner.nextInt(); // pobiera wybór użytkownika
+            int wYbOr = sCaNnEr.nextInt(); // pobiera wybór użytkownika
             System.out.print("");
 
-            switch (wybor) {
+            switch (wYbOr) {
                 case 1:
-                    GenerujHistogram(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki)));
-                    kontynuuj = false;
+                    gEnErUjHiStOgRaM(zMiAnAdOcHaR(sPrAwDzTeZnAkI), lIcZnIkZnAkOw(tEkSt, zMiAnAdOcHaR(sPrAwDzTeZnAkI)));
+                    kOnTyNuUj = false;
                     break;
                 case 2:
                     System.out.print("Podaj nazwę pliku tekstowego: ");
-                    String nazwaPliku = scanner.nextLine();
+                    String nAzWaPlIkU = sCaNnEr.nextLine();
 
-                    GenerujHistogram(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki)), nazwaPliku);
+                    gEnErUjHiStOgRaM(zMiAnAdOcHaR(sPrAwDzTeZnAkI), lIcZnIkZnAkOw(tEkSt, zMiAnAdOcHaR(sPrAwDzTeZnAkI)), nAzWaPlIkU);
                     /*
                     try {
                         BufferedReader reader = new BufferedReader(new FileReader(nazwaPliku));
@@ -185,95 +185,95 @@ public class Main {
                         System.out.println("Błąd podczas czytania pliku: " + e.getMessage());
                     }
                      */
-                    kontynuuj = false;
+                    kOnTyNuUj = false;
                     break;
                 case 3:
                     System.out.println("Koniec programu.");
-                    kontynuuj = false;
+                    kOnTyNuUj = false;
                     break;
                 default:
                     System.out.println("Nieprawidłowy wybór. Wybierz 1, 2 lub 3.");
             }
         }
     }
-    private static ArrayList<Integer> LicznikZnakow(String tekst, ArrayList<Character> listaZnakow){
-        ArrayList<Integer> listaWystepowania = new ArrayList<>();
+    private static ArrayList<Integer> lIcZnIkZnAkOw(String tEkSt, ArrayList<Character> lIsTaZnAkOw){
+        ArrayList<Integer> lIsTaWyStEpOwAnIa = new ArrayList<>();
 
-        for (char litera: listaZnakow) {
-            int counter = 0;
-            for (char znak : tekst.toCharArray()) {
-                if (znak == litera) { counter++; }
+        for (char lItErA: lIsTaZnAkOw) {
+            int cOuNtEr = 0;
+            for (char zNaK : tEkSt.toCharArray()) {
+                if (zNaK == lItErA) { cOuNtEr++; }
             }
-            listaWystepowania.add(counter);
+            lIsTaWyStEpOwAnIa.add(cOuNtEr);
         }
-        return listaWystepowania;
+        return lIsTaWyStEpOwAnIa;
     }
-    private static void DrukujCzestotliwosc(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania){
-        for (int i = 0; i < listaZnakow.size(); i++) {
-            if(listaWystepowania.get(i) != 0){
-                System.out.println(listaZnakow.get(i) + ": " + listaWystepowania.get(i));
+    private static void dRuKuJcZeStOtLiWoSc(ArrayList<Character> lIsTaZnAkOw, ArrayList<Integer> liStAwYsTePoWaNiA){
+        for (int i = 0; i < lIsTaZnAkOw.size(); i++) {
+            if(liStAwYsTePoWaNiA.get(i) != 0){
+                System.out.println(lIsTaZnAkOw.get(i) + ": " + liStAwYsTePoWaNiA.get(i));
             }
         }
     }
-    private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania) { // Generowanie histogramu w konsoli
+    private static void gEnErUjHiStOgRaM(ArrayList<Character> lIsTaZnAkOw, ArrayList<Integer> lIsTaWyStEpOwAnIa) { // Generowanie histogramu w konsoli
         System.out.println("Histogram częstości występowania liter:");
 
-        for (int i = 0; i < listaZnakow.size(); i++) {
-            if(listaWystepowania.get(i) != 0){
-                char litera = listaZnakow.get(i);
-                int ilosc = listaWystepowania.get(i);
-                System.out.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
+        for (int i = 0; i < lIsTaZnAkOw.size(); i++) {
+            if(lIsTaWyStEpOwAnIa.get(i) != 0){
+                char lItErA = lIsTaZnAkOw.get(i);
+                int iLoSc = lIsTaWyStEpOwAnIa.get(i);
+                System.out.println(lItErA + ": " + gEnErUjLiNiEhIsToGrAmU(iLoSc, oBliCzSkAlE(lIsTaWyStEpOwAnIa)));
             }
         }
     }
-    private static void GenerujHistogram(ArrayList<Character> listaZnakow, ArrayList<Integer> listaWystepowania, String nazwaPliku) { // Generowanie histogramu do pliku txt
-        try (PrintWriter writer = new PrintWriter(nazwaPliku)) {
-            writer.println("Histogram częstości występowania liter:");
+    private static void gEnErUjHiStOgRaM(ArrayList<Character> lIsTaZnAkOw, ArrayList<Integer> lIsTaWyStEpOwAnIa, String nAzWaPlIkU) { // Generowanie histogramu do pliku txt
+        try (PrintWriter wRiTeR = new PrintWriter(nAzWaPlIkU)) {
+            wRiTeR.println("Histogram częstości występowania liter:");
 
-            for (int i = 0; i < listaZnakow.size(); i++) {
-                if(listaWystepowania.get(i) != 0) {
-                    char litera = listaZnakow.get(i);
-                    int ilosc = listaWystepowania.get(i);
-                    writer.println(litera + ": " + generujLinieHistogramu(ilosc, ObliczSkale(listaWystepowania)));
+            for (int i = 0; i < lIsTaZnAkOw.size(); i++) {
+                if(lIsTaWyStEpOwAnIa.get(i) != 0) {
+                    char lItErA = lIsTaZnAkOw.get(i);
+                    int iLoSc = lIsTaWyStEpOwAnIa.get(i);
+                    wRiTeR.println(lItErA + ": " + gEnErUjLiNiEhIsToGrAmU(iLoSc, oBliCzSkAlE(lIsTaWyStEpOwAnIa)));
                 }
             }
-            System.out.println("Histogram został zapisany do pliku " + nazwaPliku);
+            System.out.println("Histogram został zapisany do pliku " + nAzWaPlIkU);
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
     }
-    private static String generujLinieHistogramu(int ilosc, int skala) {
-        StringBuilder histogram = new StringBuilder();
-        for (int i = 0; i < (ilosc / skala); i++) {
-            histogram.append("█");
+    private static String gEnErUjLiNiEhIsToGrAmU(int iLoSc, int sKaLa) {
+        StringBuilder hIsToGrAm = new StringBuilder();
+        for (int i = 0; i < (iLoSc / sKaLa); i++) {
+            hIsToGrAm.append("█");
         }
-        return histogram.toString();
+        return hIsToGrAm.toString();
     }
-    private static ArrayList<Character> ZmianaDoChar(String sprawdzTeZnaki){
-        ArrayList<Character> listaZnakow = new ArrayList<>();
+    private static ArrayList<Character> zMiAnAdOcHaR(String sPrAwDzTeZnAkI){
+        ArrayList<Character> lIsTaznAkOw = new ArrayList<>();
 
-        for (char x: sprawdzTeZnaki.toLowerCase().toCharArray()) {
+        for (char x: sPrAwDzTeZnAkI.toLowerCase().toCharArray()) {
             if(x != ',' && x != ' '){
-                listaZnakow.add(x);
+                lIsTaznAkOw.add(x);
             }
         }
-        return listaZnakow;
+        return lIsTaznAkOw;
     }
-    private static int ObliczSkale(ArrayList<Integer> listaWystepowania){ // Oblicza skale w jakiej się będzie wyświetlał histogram w przypadku otrzymania dużej liczby danych
-        int skala = 1;
-        if (Max(listaWystepowania) > 50) {
-            skala = Max(listaWystepowania) / 50;
+    private static int oBliCzSkAlE(ArrayList<Integer> lIsTaWyStEpOwAnIa){ // Oblicza skale w jakiej się będzie wyświetlał histogram w przypadku otrzymania dużej liczby danych
+        int sKaLa = 1;
+        if (Max(lIsTaWyStEpOwAnIa) > 50) {
+            sKaLa = Max(lIsTaWyStEpOwAnIa) / 50;
         }
-        return skala;
+        return sKaLa;
     }
-    public static int Max(ArrayList<Integer> listaWystepowania) { //Zwraca największy element w Array
-        int najwiekszy = listaWystepowania.get(0);
+    public static int Max(ArrayList<Integer> lIsTaWyStEpOwAnIa) { //Zwraca największy element w Array
+        int nAjWiEkSzY = lIsTaWyStEpOwAnIa.get(0);
 
-        for (int i = 0; i < listaWystepowania.size(); i++) {
-            if (listaWystepowania.get(i) > najwiekszy) {
-                najwiekszy = listaWystepowania.get(i);
+        for (int i = 0; i < lIsTaWyStEpOwAnIa.size(); i++) {
+            if (lIsTaWyStEpOwAnIa.get(i) > nAjWiEkSzY) {
+                nAjWiEkSzY = lIsTaWyStEpOwAnIa.get(i);
             }
         }
-        return najwiekszy; // Zwracamy znaleziony największy element.
+        return nAjWiEkSzY; // Zwracamy znaleziony największy element.
     }
 }
