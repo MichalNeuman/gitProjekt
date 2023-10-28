@@ -146,7 +146,7 @@ public class Main {
         }
         System.out.println();
 
-        //DrukujCzestotliwosc(ZmianaDoChar(sprawdzTeZnaki), LicznikZnakow(tekst, ZmianaDoChar(sprawdzTeZnaki))); // Drukuje częstotliwość znaków
+        dRuKuJcZeStOtLiWoSc(zMiAnAdOcHaR(sPrAwDzTeZnAkI), lIcZnIkZnAkOw(tEkSt, zMiAnAdOcHaR(sPrAwDzTeZnAkI))); // Drukuje częstotliwość znaków
 
         kOnTyNuUj = true;
         while (kOnTyNuUj){ // Jak wydrukować histogram
