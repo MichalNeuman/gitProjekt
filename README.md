@@ -50,7 +50,7 @@ Aby uruchomić program, należy:
 Program oferuje prosty interfejs konsolowy, który pozwala użytkownikowi wybierać opcje wczytywania tekstu i generowania histogramu.
 
 
-## Autor
+## Autorzy
 
 Ten program został napisany przez wybitnych studntów.
 
